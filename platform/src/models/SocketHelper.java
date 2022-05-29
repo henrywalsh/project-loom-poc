@@ -5,12 +5,12 @@ import java.net.Socket;
 import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
-public class StringTransferSocket extends Socket {
+public class SocketHelper extends Socket {
 
     private final Scanner scanner;
     private final PrintWriter printWriter;
 
-    public StringTransferSocket(Socket socket) throws IOException {
+    public SocketHelper(Socket socket) throws IOException {
         InputStream inputStream = socket.getInputStream();
         OutputStream outputStream = socket.getOutputStream();
 

@@ -1,19 +1,19 @@
 package server;
 
-import models.StringTransferSocket;
+import models.SocketHelper;
 
 import java.io.*;
 import java.util.Scanner;
 
 public class ConnectionHandler implements Runnable {
 
-    private final StringTransferSocket socket;
+    private final SocketHelper socket;
     private final Scanner scanner;
     private final PrintWriter printWriter;
 
     private Thread currentThread;
 
-    public ConnectionHandler(StringTransferSocket socket) {
+    public ConnectionHandler(SocketHelper socket) {
         this.socket = socket;
         this.scanner = socket.getScanner();
         this.printWriter = socket.getPrintWriter();

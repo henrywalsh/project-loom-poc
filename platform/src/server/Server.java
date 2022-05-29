@@ -1,6 +1,7 @@
 package server;
 
-import models.StringTransferSocket;
+import constants.ConnectionConstants;
+import models.SocketHelper;
 
 import java.io.*;
 import java.net.ServerSocket;
@@ -13,9 +14,9 @@ public class Server {
 
     public static void connectToServer() {
 
-        try (ServerSocket serverSocket = new ServerSocket(420)) {
-            for (int i = 0; i < 4; i++) {
-                StringTransferSocket socket = new StringTransferSocket(serverSocket.accept());
+        try (ServerSocket serverSocket = new ServerSocket(ConnectionConstants.PORT)) {
+            while (true) {
+                SocketHelper socket = new SocketHelper(serverSocket.accept());
 
                 Runnable connectionHandler = new ConnectionHandler(socket);
 

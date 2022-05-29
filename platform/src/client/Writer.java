@@ -2,16 +2,15 @@ package client;
 
 import java.io.PrintWriter;
 
-public record WriteHandler(PrintWriter printWriter) implements Runnable {
+public record Writer(PrintWriter printWriter, String clientName) implements Runnable {
 
     @Override
     public void run() {
-        Thread currentThread = Thread.currentThread();
-        System.out.println(currentThread.getName() + ", Starting to send messages to server:");
+        System.out.println(clientName + ", Starting to send messages to server:");
 
         // Send n number of messages to server, with a second gap between each one.
         for (int i = 0; i < 10; i++) {
-            System.out.println(currentThread.getName() + ", Sending: " + i);
+            System.out.println(clientName + ", Sending: " + i);
             printWriter.println(i);
 
             try {
