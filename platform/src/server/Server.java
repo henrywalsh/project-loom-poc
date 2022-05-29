@@ -1,7 +1,7 @@
 package server;
 
 import constants.ConnectionConstants;
-import models.SocketHelper;
+import helpers.SocketHelper;
 
 import java.io.*;
 import java.net.ServerSocket;

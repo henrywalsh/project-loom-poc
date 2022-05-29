@@ -1,22 +1,22 @@
 package server;
 
-import models.SocketHelper;
+import helpers.SocketHelper;
 
 import java.io.*;
 import java.util.Scanner;
 
 public class ConnectionHandler implements Runnable {
 
-    private final SocketHelper socket;
+    private final SocketHelper socketHelper;
     private final Scanner scanner;
     private final PrintWriter printWriter;
 
     private Thread currentThread;
 
-    public ConnectionHandler(SocketHelper socket) {
-        this.socket = socket;
-        this.scanner = socket.getScanner();
-        this.printWriter = socket.getPrintWriter();
+    public ConnectionHandler(SocketHelper socketHelper) {
+        this.socketHelper = socketHelper;
+        this.scanner = socketHelper.getScanner();
+        this.printWriter = socketHelper.getPrintWriter();
     }
 
     @Override
@@ -44,7 +44,7 @@ public class ConnectionHandler implements Runnable {
     private void closeConnection() throws IOException {
         scanner.close();
         printWriter.close();
-        socket.close();
+        socketHelper.close();
         currentThread.interrupt();
     }
 }

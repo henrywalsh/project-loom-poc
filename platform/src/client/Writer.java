@@ -10,8 +10,9 @@ public record Writer(PrintWriter printWriter, String clientName) implements Runn
 
         // Send n number of messages to server, with a second gap between each one.
         for (int i = 0; i < 10; i++) {
-            System.out.println(clientName + ", Sending: " + i);
-            printWriter.println(i);
+            String message = "Message" + i;
+            System.out.println(clientName + ", Sending: " + message);
+            printWriter.println(message);
 
             try {
                 Thread.sleep(1000); // 1 sec
